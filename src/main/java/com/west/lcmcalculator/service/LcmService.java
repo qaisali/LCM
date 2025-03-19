@@ -49,10 +49,20 @@ public class LcmService {
   }
 
   /**
-   * Uses the Sieve of Eratosthenes algorithm to find all prime numbers up to a given limit.
+   * Implements the Sieve of Eratosthenes algorithm to generate a list of prime numbers up to a specified limit.
+   * This method iterates through numbers, checking divisibility against previously identified primes.
    *
-   * @param limit The upper bound to find prime numbers (inclusive)
-   * @return A list of prime numbers up to the given limit
+   * Algorithm Explanation:
+   * - Start with an empty list of primes.
+   * - Iterate from 2 to the given limit.
+   * - For each number, check if it is divisible by any previously found prime.
+   * - If the number is not divisible by any known prime, it is prime and added to the list.
+   * - Stop checking divisibility once a prime squared exceeds the current number (optimization).
+   *
+   * Time Complexity: O(n√n) (not the most optimized Sieve of Eratosthenes but effective for smaller ranges).
+   *
+   * @param limit The upper bound (inclusive) up to which prime numbers should be found.
+   * @return A list containing all prime numbers up to the given limit.
    */
   private List<Long> sieveOfEratosthenes(long limit) {
     List<Long> primes = new ArrayList<>();
