@@ -8,7 +8,7 @@ import java.math.BigInteger;
  * Unit tests for {@link LcmService}. Ensures that the LCM calculation logic is working correctly for
  * various ranges.
  */
-public class LcmServiceTest {
+class LcmServiceTest {
 
   private final LcmService lcmService = new LcmService();
 
