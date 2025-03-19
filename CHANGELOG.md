@@ -21,8 +21,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - removed access modifier public from unittest, SonarQube is right :)
-- fixed endpoint name :)
-
+- endpoint name :)
+- unittests after changing the controller
+- 
 ## [1.3.0-SNAPSHOT] - 2025-03-19
 
 ### Changed
