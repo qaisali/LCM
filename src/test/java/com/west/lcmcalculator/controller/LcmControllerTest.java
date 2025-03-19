@@ -1,52 +1,59 @@
 package com.west.lcmcalculator.controller;
 
+import com.west.lcmcalculator.service.LcmService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import java.math.BigInteger;
+
+import static org.mockito.Mockito.when;
 
 /**
- * Unit tests for {@link LcmController}.
- * Ensures that the API correctly handles valid and invalid inputs.
+ * Unit tests for LcmController.
  */
-@SpringBootTest
-@AutoConfigureMockMvc
-class LcmControllerTest {
+@WebMvcTest(LcmController.class)
+public class LcmControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
+    @MockBean
+    private LcmService lcmService;
+
     /**
-     * Tests that the API returns 400 Bad Request for negative numbers.
+     * Tests valid LCM calculation request.
      */
     @Test
-    void testNegativeNumber() throws Exception {
-        mockMvc.perform(get("/api/lcm/lacmofrange/-5"))
-                .andExpect(status().isBadRequest())
-                .andExpect(content().string("Input must be a positive integer greater than zero."));
+    void testGetLcm_ValidInput() throws Exception {
+        when(lcmService.calculateLcmOfRange(10)).thenReturn(BigInteger.valueOf(2520));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/lcm/lcmofrange/10"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string("2520"));
     }
 
     /**
-     * Tests that the API returns 400 Bad Request for non-numeric input.
+     * Tests invalid input (negative number) handling.
      */
     @Test
-    void testInvalidStringInput() throws Exception {
-        mockMvc.perform(get("/api/lcm/lacmofrange/abc"))
-                .andExpect(status().isBadRequest())
-                .andExpect(content().string("Invalid input. Please enter a valid positive integer."));
+    void testGetLcm_NegativeInput() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/lcm/lcmofrange/-5"))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andExpect(MockMvcResultMatchers.content().string("Input must be a positive integer greater than zero."));
     }
 
     /**
-     * Tests that the API returns 400 Bad Request for non-numeric input.
+     * Tests invalid input (non-numeric) handling.
      */
     @Test
-    void testValidInput() throws Exception {
-        mockMvc.perform(get("/api/lcm/lacmofrange/2"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("2"));
+    void testGetLcm_NonNumericInput() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/lcm/lcmofrange/abc"))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andExpect(MockMvcResultMatchers.content().string("Invalid input. Please enter a valid positive integer."));
     }
 }
