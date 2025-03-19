@@ -10,7 +10,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
 /**
- * Unit tests for LcmController.
+ * Unit tests for {@LcmController}.
  * Ensures that the API correctly handles valid and invalid inputs.
  */
 @SpringBootTest

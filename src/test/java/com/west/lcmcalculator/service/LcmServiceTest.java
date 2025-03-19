@@ -1,12 +1,11 @@
 package com.west.lcmcalculator.service;
 
-import com.west.lcmcalculator.service.LcmService;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.math.BigInteger;
 
 /**
- * Unit tests for LcmService. Ensures that the LCM calculation logic is working correctly for
+ * Unit tests for {@LcmService}. Ensures that the LCM calculation logic is working correctly for
  * various ranges.
  */
 public class LcmServiceTest {
