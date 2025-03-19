@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.math.BigInteger;
 
 /**
- * Unit tests for {@LcmService}. Ensures that the LCM calculation logic is working correctly for
+ * Unit tests for {@link LcmService}. Ensures that the LCM calculation logic is working correctly for
  * various ranges.
  */
 public class LcmServiceTest {
