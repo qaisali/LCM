@@ -15,7 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Maven OWASP dependency check
 - added one more unittest
 - replaced "?" with Object in the LcmController
-- Updated JavaDoc of sieveOfEratosthenes method for Better Clarity
+- updated JavaDoc of sieveOfEratosthenes method for Better Clarity
+- improved error handling
 
 ### Fixed
 
