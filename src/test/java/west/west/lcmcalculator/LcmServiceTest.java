@@ -13,11 +13,23 @@ public class LcmServiceTest {
 
   private final LcmService lcmService = new LcmService();
 
-    /** Tests LCM calculation for numbers from 1 to 10. Expected result: 2520 */
-    @Test
-    void testLcmOfRangeOf1() {
-        assertEquals(BigInteger.valueOf(1), lcmService.calculateLcmOfRange(1));
-    }
+  /** Tests LCM calculation for numbers from 1 to 1. Expected result: 1 */
+  @Test
+  void testLcmOfRangeOf1() {
+    assertEquals(BigInteger.valueOf(1), lcmService.calculateLcmOfRange(1));
+  }
+
+  /** Tests LCM calculation for numbers from 1 to 2. Expected result: 2 */
+  @Test
+  void testLcmOfRangeOf2() {
+    assertEquals(BigInteger.valueOf(2), lcmService.calculateLcmOfRange(2));
+  }
+
+  /** Tests LCM calculation for numbers from 1 to 3. Expected result: 6 */
+  @Test
+  void testLcmOfRangeOf3() {
+    assertEquals(BigInteger.valueOf(6), lcmService.calculateLcmOfRange(3));
+  }
 
   /** Tests LCM calculation for numbers from 1 to 10. Expected result: 2520 */
   @Test
