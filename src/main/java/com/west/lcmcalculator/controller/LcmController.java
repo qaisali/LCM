@@ -28,7 +28,7 @@ public class LcmController {
    * @param n The upper limit of the range (inclusive)
    * @return The LCM as a BigInteger in a ResponseEntity, or an error message in case of invalid input or system error.
    */
-  @GetMapping("/lacmofrange/{n}")
+  @GetMapping("/lcmofrange/{n}")
   public ResponseEntity<Object> getLcmOfRange(@PathVariable String n) {
     try {
       long num = Long.parseLong(n);
