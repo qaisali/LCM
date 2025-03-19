@@ -14,7 +14,8 @@ import java.math.BigInteger;
 import static org.mockito.Mockito.when;
 
 /**
- * Unit tests for LcmController.
+ * Unit tests for {@link LcmController}.
+ * Ensures that the API correctly handles valid and invalid inputs.
  */
 @WebMvcTest(LcmController.class)
 class LcmControllerTest {
