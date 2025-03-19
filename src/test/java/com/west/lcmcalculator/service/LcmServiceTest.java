@@ -1,4 +1,4 @@
-package west.west.lcmcalculator;
+package com.west.lcmcalculator.service;
 
 import com.west.lcmcalculator.service.LcmService;
 import org.junit.jupiter.api.Test;
