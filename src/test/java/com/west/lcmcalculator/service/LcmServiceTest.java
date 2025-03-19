@@ -23,6 +23,17 @@ public class LcmServiceTest {
     assertEquals("Input must be a positive integer greater than zero.", exception.getMessage());
   }
 
+  /**
+   * Tests that LCM calculation throws an exception for 0 as input.
+   */
+  @Test
+  void test0AsInputThrowsException() {
+    Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+      lcmService.calculateLcmOfRange(0);
+    });
+    assertEquals("Input must be a positive integer greater than zero.", exception.getMessage());
+  }
+
   /** Tests LCM calculation for numbers from 1 to 1. Expected result: 1 */
   @Test
   void testLcmOfRangeOf1() {

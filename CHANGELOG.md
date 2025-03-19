@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - input validation logic
 - controller unittests
 - Maven OWASP dependency check
+- added one more unittest
 
 ## [1.3.0-SNAPSHOT] - 2025-03-19
 
