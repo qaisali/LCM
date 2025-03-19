@@ -42,30 +42,26 @@ public class LcmService {
   }
 
   /**
-   * Uses the Sieve of Eratosthenes algorithm to find all prime numbers up to a given limit.
+   * Uses a dynamic approach to find all prime numbers up to a given limit.
+   * This method avoids memory overflow by not using a boolean array.
    *
    * @param limit The upper bound to find prime numbers (inclusive)
    * @return A list of prime numbers up to the given limit
    */
   private List<Long> sieveOfEratosthenes(long limit) {
-    boolean[] isPrime = new boolean[(int) (limit + 1)];
     List<Long> primes = new ArrayList<>();
 
-    for (long i = 2; i <= limit; i++) {
-      isPrime[(int) i] = true;
-    }
-
-    for (long p = 2; p * p <= limit; p++) {
-      if (isPrime[(int) p]) {
-        for (long i = p * p; i <= limit; i += p) {
-          isPrime[(int) i] = false;
+    for (long num = 2; num <= limit; num++) {
+      boolean isPrime = true;
+      for (Long prime : primes) {
+        if (prime * prime > num) break;
+        if (num % prime == 0) {
+          isPrime = false;
+          break;
         }
       }
-    }
-
-    for (long i = 2; i <= limit; i++) {
-      if (isPrime[(int) i]) {
-        primes.add(i);
+      if (isPrime) {
+        primes.add(num);
       }
     }
 
