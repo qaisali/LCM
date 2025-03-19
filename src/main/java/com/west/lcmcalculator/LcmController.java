@@ -21,7 +21,7 @@ public class LcmController {
    * @return The LCM as a BigInteger
    */
   @GetMapping("/lacmofrange/{n}")
-  public BigInteger getLcmOfRange(@PathVariable int n) {
+  public BigInteger getLcmOfRange(@PathVariable long n) {
     return lcmService.calculateLcmOfRange(n);
   }
 }

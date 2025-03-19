@@ -5,27 +5,31 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-/** Service class for calculating the Least Common Multiple (LCM) using prime factorization. */
+/**
+ * Service class for calculating the Least Common Multiple (LCM) using prime factorization.
+ */
 @Service
 public class LcmService {
 
   private static final Logger logger = LoggerFactory.getLogger(LcmService.class);
 
   /**
-   * Calculates the Least Common Multiple (LCM) of numbers from 1 to n. Uses prime factorization and
-   * the highest exponent of each prime within the range.
+   * Calculates the Least Common Multiple (LCM) of numbers from 1 to n.
+   * Uses prime factorization and the highest exponent of each prime within the range.
    *
-   * @param n The upper limit of the range (inclusive)
+   * @param n The upper limit of the range (inclusive) as a long
    * @return The LCM as a BigInteger
    */
-  public BigInteger calculateLcmOfRange(int n) {
+  public BigInteger calculateLcmOfRange(long n) {
     long startTime = System.currentTimeMillis();
-    List<Integer> primes = sieveOfEratosthenes(n);
+    List<Long> primes = sieveOfEratosthenes(n);
     BigInteger lcm = BigInteger.ONE;
 
-    for (int prime : primes) {
+    for (Long prime : primes) {
       int exponent = (int) (Math.log(n) / Math.log(prime));
       BigInteger primePower = BigInteger.valueOf(prime).pow(exponent);
       lcm = lcm.multiply(primePower);
@@ -43,24 +47,24 @@ public class LcmService {
    * @param limit The upper bound to find prime numbers (inclusive)
    * @return A list of prime numbers up to the given limit
    */
-  private List<Integer> sieveOfEratosthenes(int limit) {
-    boolean[] isPrime = new boolean[limit + 1];
-    List<Integer> primes = new ArrayList<>();
+  private List<Long> sieveOfEratosthenes(long limit) {
+    boolean[] isPrime = new boolean[(int) (limit + 1)];
+    List<Long> primes = new ArrayList<>();
 
-    for (int i = 2; i <= limit; i++) {
-      isPrime[i] = true;
+    for (long i = 2; i <= limit; i++) {
+      isPrime[(int) i] = true;
     }
 
-    for (int p = 2; p * p <= limit; p++) {
-      if (isPrime[p]) {
-        for (int i = p * p; i <= limit; i += p) {
-          isPrime[i] = false;
+    for (long p = 2; p * p <= limit; p++) {
+      if (isPrime[(int) p]) {
+        for (long i = p * p; i <= limit; i += p) {
+          isPrime[(int) i] = false;
         }
       }
     }
 
-    for (int i = 2; i <= limit; i++) {
-      if (isPrime[i]) {
+    for (long i = 2; i <= limit; i++) {
+      if (isPrime[(int) i]) {
         primes.add(i);
       }
     }
