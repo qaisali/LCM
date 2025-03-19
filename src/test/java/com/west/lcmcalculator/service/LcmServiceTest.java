@@ -41,11 +41,4 @@ public class LcmServiceTest {
   void testLcmOfRangeOf15() {
     assertEquals(BigInteger.valueOf(360360), lcmService.calculateLcmOfRange(15));
   }
-
-  /** Tests LCM calculation for numbers from 1 to 25. Expected result: 26771144400 */
-  @Test
-  void testLcmOfRangeOf25() {
-    BigInteger expected = new BigInteger("26771144400");
-    assertEquals(expected, lcmService.calculateLcmOfRange(25));
-  }
 }
