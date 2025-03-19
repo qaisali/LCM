@@ -23,7 +23,7 @@ public class LcmController {
    * @return The LCM as a BigInteger, or a bad request response if the input is invalid
    */
   @GetMapping("/lacmofrange/{n}")
-  public ResponseEntity<?> getLcmOfRange(@PathVariable String n) {
+  public ResponseEntity<Object> getLcmOfRange(@PathVariable String n) {
     try {
       long num = Long.parseLong(n);
       if (num < 1) {

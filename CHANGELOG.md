@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - controller unittests
 - Maven OWASP dependency check
 - added one more unittest
+- replaced "?" with Object in the LcmController
 
 ### Fixed
 
