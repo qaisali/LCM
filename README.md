@@ -25,11 +25,11 @@ mvn spring-boot:run
 ### Find LCM of numbers from 1 to N
 Send a GET request to:
 ```
-http://localhost:8090/api/lcm/lcmofrange/{N}
+http://localhost:8090/api/lcm/v1/lcmofrange/{N}
 ```
 Example:
 ```
-curl http://localhost:8090/api/lcm/lcmofrange/25
+curl http://localhost:8090/api/lcm/v1/lcmofrange/25
 ```
 
 ## Running Tests

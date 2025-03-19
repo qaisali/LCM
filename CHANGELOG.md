@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - replaced "?" with Object in the LcmController
 - updated JavaDoc of sieveOfEratosthenes method for Better Clarity
 - improved error handling
+- added version number to the api endpoint
 
 ### Fixed
 

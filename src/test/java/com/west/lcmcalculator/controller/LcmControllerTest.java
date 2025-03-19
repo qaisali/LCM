@@ -33,7 +33,7 @@ class LcmControllerTest {
     void testGetLcm_ValidInput() throws Exception {
         when(lcmService.calculateLcmOfRange(10)).thenReturn(BigInteger.valueOf(2520));
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/lcm/lcmofrange/10"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/lcm/v1/lcmofrange/10"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string("2520"));
     }
@@ -43,7 +43,7 @@ class LcmControllerTest {
      */
     @Test
     void testGetLcm_NegativeInput() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/lcm/lcmofrange/-5"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/lcm/v1/lcmofrange/-5"))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.content().string("Input must be a positive integer greater than zero."));
     }
@@ -53,7 +53,7 @@ class LcmControllerTest {
      */
     @Test
     void testGetLcm_NonNumericInput() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/lcm/lcmofrange/abc"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/lcm/v1/lcmofrange/abc"))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.content().string("Invalid input. Please enter a valid positive integer."));
     }

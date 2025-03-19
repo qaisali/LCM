@@ -15,7 +15,7 @@ import java.math.BigInteger;
  * numbers from 1 to a given number.
  */
 @RestController
-@RequestMapping("/api/lcm")
+@RequestMapping("/api/lcm/v1")
 public class LcmController {
 
   private static final Logger logger = LoggerFactory.getLogger(LcmController.class);
