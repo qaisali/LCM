@@ -49,8 +49,9 @@ public class LcmService {
   }
 
   /**
-   * Implements the Sieve of Eratosthenes algorithm to generate a list of prime numbers up to a specified limit.
-   * This method iterates through numbers, checking divisibility against previously identified primes.
+   * Implements the Sieve of Eratosthenes algorithm to generate a list of prime numbers up to a
+   * specified limit. This method iterates through numbers, checking divisibility against previously
+   * identified primes.
    *
    * Algorithm Explanation:
    * - Start with an empty list of primes.
@@ -58,8 +59,6 @@ public class LcmService {
    * - For each number, check if it is divisible by any previously found prime.
    * - If the number is not divisible by any known prime, it is prime and added to the list.
    * - Stop checking divisibility once a prime squared exceeds the current number (optimization).
-   *
-   * Time Complexity: O(n√n) (not the most optimized Sieve of Eratosthenes but effective for smaller ranges).
    *
    * @param limit The upper bound (inclusive) up to which prime numbers should be found.
    * @return A list containing all prime numbers up to the given limit.
