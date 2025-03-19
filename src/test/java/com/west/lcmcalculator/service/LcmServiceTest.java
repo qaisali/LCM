@@ -12,6 +12,17 @@ public class LcmServiceTest {
 
   private final LcmService lcmService = new LcmService();
 
+  /**
+   * Tests that LCM calculation throws an exception for negative numbers.
+   */
+  @Test
+  void testNegativeNumberThrowsException() {
+    Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+      lcmService.calculateLcmOfRange(-5);
+    });
+    assertEquals("Input must be a positive integer greater than zero.", exception.getMessage());
+  }
+
   /** Tests LCM calculation for numbers from 1 to 1. Expected result: 1 */
   @Test
   void testLcmOfRangeOf1() {

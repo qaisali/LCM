@@ -21,8 +21,14 @@ public class LcmService {
    *
    * @param n The upper limit of the range (inclusive) as a long
    * @return The LCM as a BigInteger
+   * @throws IllegalArgumentException if n is negative or zero
    */
   public BigInteger calculateLcmOfRange(long n) {
+
+    if (n < 1) {
+      throw new IllegalArgumentException("Input must be a positive integer greater than zero.");
+    }
+
     long startTime = System.currentTimeMillis();
     List<Long> primes = sieveOfEratosthenes(n);
     BigInteger lcm = BigInteger.ONE;
