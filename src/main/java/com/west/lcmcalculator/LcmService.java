@@ -5,9 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Service class for calculating the Least Common Multiple (LCM) using prime factorization.
@@ -30,8 +28,11 @@ public class LcmService {
     BigInteger lcm = BigInteger.ONE;
 
     for (Long prime : primes) {
-      int exponent = (int) (Math.log(n) / Math.log(prime));
-      BigInteger primePower = BigInteger.valueOf(prime).pow(exponent);
+      BigInteger primeBig = BigInteger.valueOf(prime);
+      BigInteger primePower = primeBig;
+      while (primePower.multiply(primeBig).compareTo(BigInteger.valueOf(n)) <= 0) {
+        primePower = primePower.multiply(primeBig);
+      }
       lcm = lcm.multiply(primePower);
     }
 
@@ -42,8 +43,7 @@ public class LcmService {
   }
 
   /**
-   * Uses a dynamic approach to find all prime numbers up to a given limit.
-   * This method avoids memory overflow by not using a boolean array.
+   * Uses the Sieve of Eratosthenes algorithm to find all prime numbers up to a given limit.
    *
    * @param limit The upper bound to find prime numbers (inclusive)
    * @return A list of prime numbers up to the given limit
