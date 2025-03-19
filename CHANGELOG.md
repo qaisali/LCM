@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - updated JavaDoc of sieveOfEratosthenes method for Better Clarity
 - improved error handling
 - added version number to the api endpoint
+- replaced application.properties with application.properties, now using prometheus to check the end points
 
 ### Fixed
 
