@@ -1,4 +1,4 @@
-package com.west.lcmcalculator;
+package com.west.lcmcalculator.service;
 
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;

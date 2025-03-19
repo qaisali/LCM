@@ -1,5 +1,6 @@
-package com.west.lcmcalculator;
+package com.west.lcmcalculator.controller;
 
+import com.west.lcmcalculator.service.LcmService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.math.BigInteger;

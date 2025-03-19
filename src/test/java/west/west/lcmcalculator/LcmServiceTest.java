@@ -1,6 +1,6 @@
 package west.west.lcmcalculator;
 
-import com.west.lcmcalculator.LcmService;
+import com.west.lcmcalculator.service.LcmService;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.math.BigInteger;
