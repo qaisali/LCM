@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Maven OWASP dependency check
 - added one more unittest
 
+### Fixed
+
+- removed access modifier public from unittest, SonarQube is right :)
+
 ## [1.3.0-SNAPSHOT] - 2025-03-19
 
 ### Changed
