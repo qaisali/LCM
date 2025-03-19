@@ -17,7 +17,7 @@ import static org.mockito.Mockito.when;
  * Unit tests for LcmController.
  */
 @WebMvcTest(LcmController.class)
-public class LcmControllerTest {
+class LcmControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
