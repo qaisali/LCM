@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - input validation to the LcmService
 - input validation logic
 - controller unittests
+- Maven OWASP dependency check
 
 ## [1.3.0-SNAPSHOT] - 2025-03-19
 
