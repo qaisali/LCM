@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - now using nanoTime
 - improved calculateLcmOfRange by introducing nextPower
 - improved sieveOfEratosthenes method by generating boolean array of composite numbers
+- added new unittest
 
 ## [1.4.0-SNAPSHOT] - 2025-03-19
 

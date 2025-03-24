@@ -3,6 +3,7 @@ package com.west.lcmcalculator.service;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.math.BigInteger;
+import java.time.Duration;
 
 /**
  * Unit tests for {@link LcmService}. Ensures that the LCM calculation logic is working correctly for
@@ -63,4 +64,16 @@ class LcmServiceTest {
   void testLcmOfRangeOf15() {
     assertEquals(BigInteger.valueOf(360360), lcmService.calculateLcmOfRange(15));
   }
+
+  /**
+   * Tests that the LCM calculation completes within 30 seconds.
+   */
+  @Test
+  void testLcmPerformanceWithin30Seconds() {
+    assertTimeout(Duration.ofSeconds(30), () -> {
+      BigInteger result = lcmService.calculateLcmOfRange(25);
+      assertNotNull(result);
+    });
+  }
+
 }
