@@ -29,54 +29,60 @@ public class LcmService {
       throw new IllegalArgumentException("Input must be a positive integer greater than zero.");
     }
 
-    long startTime = System.currentTimeMillis();
+    long startTime = System.nanoTime();
     List<Long> primes = sieveOfEratosthenes(n);
     BigInteger lcm = BigInteger.ONE;
 
     for (Long prime : primes) {
       BigInteger primeBig = BigInteger.valueOf(prime);
       BigInteger primePower = primeBig;
-      while (primePower.multiply(primeBig).compareTo(BigInteger.valueOf(n)) <= 0) {
-        primePower = primePower.multiply(primeBig);
+      BigInteger nextPower = primePower.multiply(primeBig);
+
+      while (nextPower.compareTo(BigInteger.valueOf(n)) <= 0) {
+        primePower = nextPower;
+        nextPower = primePower.multiply(primeBig);
       }
+
       lcm = lcm.multiply(primePower);
     }
 
-    long duration = System.currentTimeMillis() - startTime;
-    logger.info("LCM calculation for n={} took {} ms", n, duration);
+    long durationNs = System.nanoTime() - startTime;
+    double durationMs = durationNs / 1000000.0;
+
+    logger.debug("LCM calculation for n={} took {} ns (≈ {} ms)", n, durationNs, durationMs);
 
     return lcm;
   }
 
   /**
-   * Implements the Sieve of Eratosthenes algorithm to generate a list of prime numbers up to a
-   * specified limit. This method iterates through numbers, checking divisibility against previously
-   * identified primes.
+   * Generates a list of prime numbers up to a specified limit using the
+   * Sieve of Eratosthenes algorithm. This method efficiently eliminates
+   * non-prime numbers by marking multiples of each prime starting from 2.
    *
    * Algorithm Explanation:
-   * - Start with an empty list of primes.
-   * - Iterate from 2 to the given limit.
-   * - For each number, check if it is divisible by any previously found prime.
-   * - If the number is not divisible by any known prime, it is prime and added to the list.
-   * - Stop checking divisibility once a prime squared exceeds the current number (optimization).
+   * - Initialize a boolean array to track whether each number is composite (non-prime).
+   * - Starting from 2, for each number not marked as composite, mark all its multiples
+   *   as composite starting from its square (i^2).
+   * - After sieving, collect all numbers that remain unmarked as they are prime.
    *
    * @param limit The upper bound (inclusive) up to which prime numbers should be found.
    * @return A list containing all prime numbers up to the given limit.
    */
   private List<Long> sieveOfEratosthenes(long limit) {
-    List<Long> primes = new ArrayList<>();
+    boolean[] isComposite = new boolean[(int)(limit + 1)];
 
-    for (long num = 2; num <= limit; num++) {
-      boolean isPrime = true;
-      for (Long prime : primes) {
-        if (prime * prime > num) break;
-        if (num % prime == 0) {
-          isPrime = false;
-          break;
+    for (int i = 2; i * i <= limit; i++) {
+      if (!isComposite[i]) {
+        for (int j = i * i; j <= limit; j += i) {
+          isComposite[j] = true;
         }
       }
-      if (isPrime) {
-        primes.add(num);
+    }
+
+    List<Long> primes = new ArrayList<>();
+    for (int i = 2; i <= limit; i++) {
+      if (!isComposite[i]) {
+        primes.add((long) i);
       }
     }
 

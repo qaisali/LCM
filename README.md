@@ -12,7 +12,7 @@ The application finds the LCM using an optimized approach with **prime factoriza
 This approach ensures that only the necessary prime factors are included, making the computation more efficient than a naïve method.
 
 ## Requirements
-- Java 11 till 21
+- Java 11
 - Maven
 
 ## Build & Run
